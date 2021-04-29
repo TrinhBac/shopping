@@ -7,13 +7,16 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
     /**
      * The Artisan commands provided by your application.
      *
      * @var array
      */
+
+    //Register them command to make view blade
     protected $commands = [
-        //
+        commands\MakeView::class
     ];
 
     /**
@@ -24,8 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**
