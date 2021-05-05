@@ -18,7 +18,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">Category Name</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
