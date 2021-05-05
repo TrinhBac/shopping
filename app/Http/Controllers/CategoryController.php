@@ -11,26 +11,46 @@ class CategoryController extends Controller
 {
     private $category;
 
-    public function __constructor()
+    public function __construct(Category $category)
     {
+        $this->category = $category;
     }
 
     public function create()
     {
-        $Category = new Category();
-        $data = $Category->all();
-//        var_dump($data);die;
-        $data = Category::all();
-        $recusive = new Recusive($data);
-        $tmpHtmlOption = [];
-        $recusive->getCategoryRecursive($tmpHtmlOption, $data);
-        $htmlOption = implode(' ', $tmpHtmlOption);
+        $htmlOption = $this->getCategory($parentId = '');
         return view('category.add', compact('htmlOption'));
     }
 
     public function index()
     {
-        return view('category.index');
+        $categories = $this->category->latest()->paginate(5);
+        return view('category.index', compact('categories'));
+    }
+
+    public function getCategory($parentId)
+    {
+        $data = $this->category->all();
+        $recusive = new Recusive($data);
+        $htmlOption = $recusive->categoryRecusive($parentId);
+        return $htmlOption;
+    }
+
+    public function store(Request $request){
+        $this->category->create([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'slug' => str_slug($request->name)
+        ]);
+        return redirect()->route('categories.index');
+    }
+
+    public function edit($id){
+
+    }
+
+    public function delete($id){
+
     }
 
 }

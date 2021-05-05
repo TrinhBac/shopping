@@ -10,8 +10,7 @@
                     <li class="breadcrumb-item"><a href="#">{{ $name }}</a></li>
                     <li class="breadcrumb-item active">{{ $key }}</li>
                 </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /.content-header -->
